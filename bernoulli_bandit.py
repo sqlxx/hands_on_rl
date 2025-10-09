@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 class BernoulliBandit:
     def __init__(self, arms):
@@ -8,9 +7,9 @@ class BernoulliBandit:
         self.best_prob = self.probs[self.best_idx]
         self.arms = arms
 
-    def pull(self, arm):
-        import random
-        return 1 if random.random() < self.probabilities[arm] else 0
+    def step(self, arm):
+        if np.random.rand() < self.probs[arm]:
+            return 1
+        else:
+            return 0   
 
-    def get_optimal_arm(self):
-        return max(range(self.n_arms), key=lambda i: self.probabilities[i])
