@@ -62,5 +62,12 @@ dependencies:
   - xorg-libxau=1.0.12
   - xorg-libxdmcp=1.1.5
   - zstd=1.5.7
+  - pip:
+    - Farama-Notifications==0.0.4
+    - cloudpickle==3.1.1
+    - gym-notices==0.1.0
+    - gymnasium==1.2.1
+    - pygame==2.6.1
+    - typing_extensions==4.15.0
 
 prefix: "/Users/sqlxx/.local/share/mamba/envs/rl"
