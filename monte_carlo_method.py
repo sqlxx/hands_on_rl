@@ -1,5 +1,4 @@
 
-from math import e
 import numpy as np
 
 S = ["s1", "s2", "s3", "s4", "s5"]
