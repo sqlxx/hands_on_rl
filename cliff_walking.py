@@ -29,7 +29,32 @@ class CliffWalkingEnv:
                     
                     P[i * self.ncol + j][a] = [(1, next_state, reward, done)]
         return P
+
+class CliffWalkingEnv2:
+    def __init__(self, ncol, nrow):
+        self.nrow = nrow
+        self.ncol = ncol
+        self.x = 0
+        self.y = nrow -1
+
+    def step(self, action):
+        change = [[0, -1], [0, 1], [-1, 0], [1, 0]] # 4种动作： 0：上，1：下，2：左，3：右
+        self.x = min(self.ncol -1, max(0, self.x + change[action][0]))
+        self.y = min(self.nrow -1, max(0, self.y + change[action][1]))
+        reward = -1
+        done = False
+
     
+        if self.y == self.nrow -1 and self.x > 0:
+            done = True
+            if self.x != self.ncol -1:
+                reward = -100
+        return self.y * self.ncol + self.x, reward, done
+    
+    def reset(self):
+        self.x = 0
+        self.y = self.nrow -1
+        return self.y * self.ncol + self.x
 
 if __name__ == "__main__":
 
